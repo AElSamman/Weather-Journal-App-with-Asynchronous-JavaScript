@@ -9,7 +9,7 @@ let newDate = d.getMonth() + 1 + '.' + d.getDate() + '.' + d.getFullYear();
 const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?zip=';
 
 // This is my personal API key which is an application programming interface key is a unique identifier used to authenticate a user, developer, or calling program to an API
-const apiKey = '&appid=d5530d9fef2d5fbeb2f7cfae40f6d4f2';
+const apiKey = '&units=imperial&appid=d5530d9fef2d5fbeb2f7cfae40f6d4f2';
 
 //The generate click event Listening
 document.getElementById('generate').addEventListener('click', (event) => {
@@ -27,6 +27,7 @@ const getTemperatureData = async (baseUrl, zip, apiKey) => {
     const response = await fetch(baseUrl + zip + apiKey)
     try {
         const temperatureData = await response.json(); // resolves to a JavaScript object with the result of parsing the body text as JSON
+        console.log(temperatureData)
         return temperatureData.main.temp; // obtain the exact temperature value 
     } catch (error) {
         console.error('Error:', error);
